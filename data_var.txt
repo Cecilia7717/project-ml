@@ -18,3 +18,41 @@
 15              VisitorType  Feature  Categorical        None        None  None             no
 16                  Weekend  Feature       Binary        None        None  None             no
 17                  Revenue   Target       Binary        None        None  None             no
+
+
+table:                           Feature  Importance
+8                      PageValues    0.369234
+5         ProductRelated_Duration    0.097157
+7                       ExitRates    0.076653
+4                  ProductRelated    0.059157
+1         Administrative_Duration    0.056399
+6                     BounceRates    0.050291
+0                  Administrative    0.050222
+22                      Month_Nov    0.030223
+13                    TrafficType    0.028934
+3          Informational_Duration    0.028771
+12                         Region    0.026046
+2                   Informational    0.023902
+10               OperatingSystems    0.018569
+11                        Browser    0.018262
+25        VisitorType_New_Visitor    0.009933
+14                        Weekend    0.009903
+27  VisitorType_Returning_Visitor    0.009503
+20                      Month_Mar    0.006583
+24                      Month_Sep    0.006290
+23                      Month_Oct    0.005021
+21                      Month_May    0.004466
+16                      Month_Dec    0.004442
+9                      SpecialDay    0.003240
+18                      Month_Jul    0.002858
+26              VisitorType_Other    0.001264
+19                     Month_June    0.001184
+15                      Month_Aug    0.001161
+17                      Month_Feb    0.000334
+Top Features:
+                    Feature  Importance
+8               PageValues    0.369234
+5  ProductRelated_Duration    0.097157
+7                ExitRates    0.076653
+4           ProductRelated    0.059157
+1  Administrative_Duration    0.056399
