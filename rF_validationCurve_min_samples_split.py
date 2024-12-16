@@ -27,33 +27,26 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_
 
 min_samples_split_range = range(2, 21)
 
-# Initialize empty lists to store validation scores
 train_scores = []
 val_scores = []
 
-# Iterate over different max_depth values
 for min_samples_split in min_samples_split_range:
-    # Create a Random Forest model with the current max_depth
     rf_model = RandomForestClassifier(min_samples_split=min_samples_split, random_state=42)
 
-    # Cross-validation on training data
     train_score = cross_val_score(rf_model, X_train, y_train, cv=5).mean()
     train_scores.append(train_score)
 
-    # Evaluate on validation set
     rf_model.fit(X_train, y_train)
     val_score = rf_model.score(X_test, y_test)
     val_scores.append(val_score)
 
-# Plot the validation curve
 plt.plot(min_samples_split_range, train_scores, label='Train')
 plt.plot(min_samples_split_range, val_scores, label='Validation', linestyle='--')
 plt.xlabel('min_samples_split')
 plt.ylabel('Accuracy')
 plt.title('Validation Curve for Random Forest')
-plt.xticks(range(min(min_samples_split_range), max(min_samples_split_range), 5))  # Adjust range if needed
+plt.xticks(range(min(min_samples_split_range), max(min_samples_split_range), 5)) 
 
-# Rotate x-axis labels for better readability
 plt.xticks(rotation=45) 
 plt.legend()
 plt.savefig("Validation Curve for Random Forest (min_samples_split).png")

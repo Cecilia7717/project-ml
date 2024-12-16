@@ -64,9 +64,18 @@ Present the results of your experiments, including:
 - Comparisons between models or baselines.
 - Visualizations (e.g., plots, confusion matrices).
 
-# AdaBoost
+# Hyperparameter tuning
+
+Here we will include the results for hyperparameter tuning for both AdaBoost and Random Forest. We will use validation curve with both training accuracy and validation accuracy to show the sensitivity between changes in AdaBoost and Random Forest's accuracy with changes in hyperparameters of the model.
+
+**AdaBoost**
+
+The graph below shows the accuracy of the model on both the training and validation sets as the number of estimators increases. We varies n_estimators from 0 to 150. The training accuracy generally increases with more estimators at early stage, while the validation accuracy reaches a plateau and starts to fluctuate. This suggests that increasing the number of estimators beyond a certain point may lead to overfitting, as the model becomes too complex and starts to fit the noise in the training data. We suggests that setting n_estimators to be around 12 might be best. However, this might be influenced by the fact that we only use 1000 samples from the dataset.
 
 ![Alt text](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20AdaBoost%20(n_estimators).png)
+
+
+
 **Example:**
 
 | Model          | Accuracy | Precision | Recall | F1 Score |
