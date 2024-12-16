@@ -86,7 +86,6 @@ This pattern suggests that a learning rate around 0.52 might be a good choice fo
 ![Alt text](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20AdaBoost%20(learning_rate).png)
 
 #### Random Forest
-
 **n_estimators**
 
 The plot illustrates the validation curve for a Random Forest model, showcasing the impact of the number of n_estimators on both training and validation accuracy. As the number of n_estimators increases, the training accuracy steadily improves, while the validation accuracy initially increases and then stabilizes around a value of 0.88. This suggests that increasing the number of estimators beyond a certain point (around 50) provides diminishing returns in terms of validation accuracy. Therefore, a model with approximately 45 estimators might be a good balance between model complexity and generalization performance.
