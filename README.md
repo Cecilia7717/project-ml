@@ -68,15 +68,15 @@ Present the results of your experiments, including:
 
 Here we will include the results for hyperparameter tuning for both AdaBoost and Random Forest. We will use validation curve with both training accuracy and validation accuracy to show the sensitivity between changes in AdaBoost and Random Forest's accuracy with changes in hyperparameters of the model.
 
-**AdaBoost**
+#### AdaBoost
 
-*n_estimators*
+**n_estimators**
 
 The graph below shows the accuracy of the model on both the training and validation sets as the number of estimators increases. We varies n_estimators from 0 to 150. The training accuracy generally increases with more estimators at early stage, while the validation accuracy reaches a plateau and starts to fluctuate. This suggests that increasing the number of estimators beyond a certain point may lead to overfitting, as the model becomes too complex and starts to fit the noise in the training data. We suggests that setting n_estimators to be around 12 might be best. However, this might be influenced by the fact that we only use 1000 samples from the dataset.
 
 ![Alt text](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20AdaBoost%20(n_estimators).png)
 
-*learning rate*
+**learning rate**
 
 The plot shows the validation curve for an AdaBoost model as the learning rate increase from 0.1 to 1.
 
@@ -84,6 +84,33 @@ The blue line represents the training accuracy, while the dashed orange line rep
 This pattern suggests that a learning rate around 0.52 might be a good choice for this model. A higher learning rate can lead to overfitting, where the model becomes too sensitive to the training data and performs poorly on unseen data.
 
 ![Alt text](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20AdaBoost%20(learning_rate).png)
+
+#### Random Forest
+
+**n_estimators**
+
+The plot illustrates the validation curve for a Random Forest model, showcasing the impact of the number of n_estimators on both training and validation accuracy. As the number of n_estimators increases, the training accuracy steadily improves, while the validation accuracy initially increases and then stabilizes around a value of 0.88. This suggests that increasing the number of estimators beyond a certain point (around 100) provides diminishing returns in terms of validation accuracy. Therefore, a model with approximately 100 estimators might be a good balance between model complexity and generalization performance.
+
+![Alt text](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20Random%20Forest%20(n_estimators).png)
+
+**min_samples_split**
+
+The plot displays the validation curve for a Random Forest model, focusing on the min_samples_split hyperparameter. As min_samples_split increases, the training accuracy decreases while the validation accuracy initially improves but then fluctuates. A min_samples_split value around 12 seems to offer a good balance between overfitting and underfitting, but further tuning might be necessary.
+
+![Alt text](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20Random%20Forest%20(min_samples_split).png)
+
+**max_depth**
+
+The figure shows the validation curve of the random forest model, illustrating the effect of max_depth on the training and validation accuracy. As max_depth increases, the training accuracy steadily increases and peaks around 20. However, the validation accuracy initially rises, peaks around the same max_depth value, and then begins to decline. This suggests a potential overfitting problem, where the model becomes too complex and begins to memorize the training data instead of generalizing to unseen data. max_depth values around 20 seem to be a good compromise between bias and variance.
+
+![Alt text](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20Random%20Forest%20(max_depth).png)
+
+**criterion**
+
+The plot illustrates the validation curve for a Random Forest model, comparing Gini impurity and Log Loss as splitting criteria. While Log Loss generally achieves higher training accuracy, Gini impurity often leads to better validation accuracy, suggesting a potential trade-off between model complexity and generalization.
+
+![Alt text](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20Random%20Forest%20(criterion).png)
+
 
 **Example:**
 
