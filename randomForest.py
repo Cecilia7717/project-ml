@@ -45,6 +45,7 @@ print("Best Cross-Validation Accuracy:", grid_search.best_score_)
 
 # Extract the best parameters from the GridSearchCV
 best_params = grid_search.best_params_
+print(best_params)
 
 # Initialize the Random Forest model with the best parameters
 best_rf_model = RandomForestClassifier(random_state=42, 
@@ -83,5 +84,5 @@ plt.xlabel("Importance")
 plt.ylabel("Feature")
 plt.title("Top Feature Importances")
 plt.gca().invert_yaxis()  # To display the most important features at the top
-plt.savefig("Top 5 Important Features.png")
+# plt.savefig("Top 5 Important Features.png")
 plt.show()
