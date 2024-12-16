@@ -64,7 +64,7 @@ Present the results of your experiments, including:
 - Comparisons between models or baselines.
 - Visualizations (e.g., plots, confusion matrices).
 
-# Hyperparameter tuning
+### Hyperparameter tuning
 
 Here we will include the results for hyperparameter tuning for both AdaBoost and Random Forest. We will use validation curve with both training accuracy and validation accuracy to show the sensitivity between changes in AdaBoost and Random Forest's accuracy with changes in hyperparameters of the model.
 
