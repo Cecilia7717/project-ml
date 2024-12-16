@@ -64,6 +64,9 @@ Present the results of your experiments, including:
 - Comparisons between models or baselines.
 - Visualizations (e.g., plots, confusion matrices).
 
+# AdaBoost
+
+![Alt text](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20AdaBoost%20(n_estimators).png)
 **Example:**
 
 | Model          | Accuracy | Precision | Recall | F1 Score |
