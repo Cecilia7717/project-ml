@@ -70,11 +70,20 @@ Here we will include the results for hyperparameter tuning for both AdaBoost and
 
 **AdaBoost**
 
+*n_estimators*
+
 The graph below shows the accuracy of the model on both the training and validation sets as the number of estimators increases. We varies n_estimators from 0 to 150. The training accuracy generally increases with more estimators at early stage, while the validation accuracy reaches a plateau and starts to fluctuate. This suggests that increasing the number of estimators beyond a certain point may lead to overfitting, as the model becomes too complex and starts to fit the noise in the training data. We suggests that setting n_estimators to be around 12 might be best. However, this might be influenced by the fact that we only use 1000 samples from the dataset.
 
 ![Alt text](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20AdaBoost%20(n_estimators).png)
 
+*learning rate*
 
+The plot shows the validation curve for an AdaBoost model as the learning rate increase from 0.1 to 1.
+
+The blue line represents the training accuracy, while the dashed orange line represents the validation accuracy. As the learning rate increases, the training accuracy generally improves, but the validation accuracy initially increases, reaches a peak around a learning rate of 0.53, and then starts to decline.
+This pattern suggests that a learning rate around 0.52 might be a good choice for this model. A higher learning rate can lead to overfitting, where the model becomes too sensitive to the training data and performs poorly on unseen data.
+
+![Alt text](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20AdaBoost%20(learning_rate).png)
 
 **Example:**
 
