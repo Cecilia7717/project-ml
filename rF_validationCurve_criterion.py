@@ -29,7 +29,7 @@ X = pd.get_dummies(X, columns=['Month', 'VisitorType'])
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=42, stratify=y)
 
 n_estimators_range = range(1, 201)
-criterion_options = ["gini", "entropy", "log_loss"]  # List of splitting criteria
+criterion_options = ["gini", "log_loss"]  # List of splitting criteria
 
 # Initialize empty dictionaries to store validation scores for each criterion
 train_scores_dict = {}
@@ -68,5 +68,5 @@ plt.xlabel('n_estimators')
 plt.ylabel('Accuracy')
 plt.title('Validation Curve for Random Forest')
 plt.legend()
-plt.savefig("Validation Curve for Random Forest (criteria).png")
+plt.savefig("Validation Curve for Random Forest (criterion).png")
 plt.show()
