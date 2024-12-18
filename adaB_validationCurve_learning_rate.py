@@ -44,8 +44,8 @@ plt.plot(learning_rate_range, val_scores, label='Validation', linestyle='--')
 # plt.xticks(5)
 plt.xticks(rotation=45) 
 import numpy as np
-plt.xticks(np.arange(min(learning_rate_range), max(learning_rate_range) + 0.01, 0.05))
-
+plt.xticks(np.arange(min(learning_rate_range), max(learning_rate_range), 0.2))
+plt.ylim(0.82,0.95)
 plt.xlabel('learning rate')
 plt.ylabel('Accuracy')
 plt.title('Validation Curve for AdaBoost')

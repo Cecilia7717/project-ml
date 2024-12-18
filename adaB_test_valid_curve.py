@@ -145,6 +145,7 @@ plt.plot(df[p_name], df['Test Accuracy'], label = 'Test Accuracy', marker='*', c
 if p_name == 'gamma':
     plt.xscale('log')
 plt.xlabel(f'{p_name}')
+plt.ylim(0.82,0.95)
 plt.ylabel('Accuracy')
 plt.title('Train vs Test Accuracy')
 plt.legend()
