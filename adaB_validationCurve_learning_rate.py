@@ -23,7 +23,7 @@ X = pd.get_dummies(X, columns=['Month', 'VisitorType'])
  
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=42, stratify=y)
 n_estimators_range = range(1, 151)
-learning_rate_range = np.linspace(0.1, 1.0, 20)  
+learning_rate_range = np.linspace(0.00001, 1.0, 100)  
 
 train_scores = []
 val_scores = []
@@ -40,16 +40,15 @@ for learning_rate in learning_rate_range:
 
 plt.plot(learning_rate_range, train_scores, label='Train')
 plt.plot(learning_rate_range, val_scores, label='Validation', linestyle='--')
-plt.xlabel('min_samples_split')
-plt.ylabel('Accuracy')
-plt.title('Validation Curve for Random Forest')
-plt.xticks(learning_rate_range)  
 
+# plt.xticks(5)
 plt.xticks(rotation=45) 
+import numpy as np
+plt.xticks(np.arange(min(learning_rate_range), max(learning_rate_range) + 0.01, 0.05))
 
-plt.xlabel('n_estimators')
+plt.xlabel('learning rate')
 plt.ylabel('Accuracy')
 plt.title('Validation Curve for AdaBoost')
-plt.savefig("Validation Curve for AdaBoost (learning_rate).png")
+plt.savefig("Validation Curve for AdaBoost (learning_rate_1).png")
 plt.legend()
 plt.show()
