@@ -83,7 +83,7 @@ The plot shows the validation curve for an AdaBoost model as the learning rate i
 The blue line represents the training accuracy, while the dashed orange line represents the validation accuracy. As the learning rate increases, the training accuracy generally improves, but the validation accuracy initially increases, reaches a peak around a learning rate of 0.53, and then starts to decline.
 This pattern suggests that a learning rate around 0.52 might be a good choice for this model. A higher learning rate can lead to overfitting, where the model becomes too sensitive to the training data and performs poorly on unseen data.
 
-![Alt text](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20AdaBoost%20(learning_rate).png)
+![Alt text]([https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20AdaBoost%20(learning_rate).png](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20AdaBoost%20(learning_rate_1).png))
 
 #### Random Forest
 **n_estimators**
