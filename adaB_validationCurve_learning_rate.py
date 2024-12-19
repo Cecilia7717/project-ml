@@ -9,6 +9,11 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split, cross_val_score
 import matplotlib.pyplot as plt
 import numpy as np
+import random
+
+random.seed(26)
+np.random.seed(26)
+
 online_shoppers_purchasing_intention_dataset = fetch_ucirepo(id=468) 
   
 X = online_shoppers_purchasing_intention_dataset.data.features 
@@ -49,6 +54,6 @@ plt.ylim(0.82,0.95)
 plt.xlabel('learning rate')
 plt.ylabel('Accuracy')
 plt.title('Validation Curve for AdaBoost')
+plt.legend(loc='upper left')
 plt.savefig("Validation Curve for AdaBoost (learning_rate_1).png")
-plt.legend()
 plt.show()

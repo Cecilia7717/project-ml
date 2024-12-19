@@ -1,4 +1,5 @@
 # datasets
+import random
 from sklearn.datasets import load_breast_cancer, fetch_20newsgroups_vectorized, fetch_openml
 
 # python packages
@@ -50,48 +51,6 @@ def generate_graph(df, p_name):
     plt.savefig(f"{p_name}.png", format='png')
 
 
-def main():
-    args = parse_args()
-    if args.dataset == "cancer":
-        data = load_breast_cancer()
-        X = data['data']
-        y = data['target']
-    elif args.dataset == "news":
-        data = fetch_20newsgroups_vectorized(subset='all')
-        X = data['data']
-        y = data['target']
-        X,y = utils.shuffle(X,y) # shuffle the rows 
-        X = X[:1000] # only keep 1000 examples
-        y = y[:1000]
-    elif args.dataset == "mnist":
-        data = fetch_openml('mnist_784', data_home="/Users/ali/Desktop/cs383/HW07")
-        X = data['data']
-        y = data['target']
-        X,y = utils.shuffle(X,y) # shuffle the rows
-        X = X[:1000] # only keep 1000 examples
-        y = y[:1000]
-        X = X/255 # normalize the feature values
-    else:
-        raise ValueError(f"Unsupported dataset: {args.dataset}")
-
-    # # KNN
-    # knn_clf = KNeighborsClassifier()
-    # n_neighbors_values = range(1, 22, 2)
-    # run_VC(knn_clf, X, y, 'n_neighbors', n_neighbors_values)
-
-    # Random Forest
-    rf_clf = RandomForestClassifier()
-    n_estimator_values = range(1, 202, 10)
-    df_rf = run_VC(rf_clf, X, y, 'n_estimators', n_estimator_values)
-    generate_graph(df_rf, 'n_estimators')
-
-    
-
-    # Support Vector Machine
-    svm_clf = svm.SVC()
-    gamma_values = np.logspace(-4, 1, num=6)
-    df_svm = run_VC(svm_clf, X, y, 'gamma', gamma_values)
-    generate_graph(df_svm, 'gamma')
 
 from ucimlrepo import fetch_ucirepo 
 import pandas as pd
@@ -104,6 +63,11 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split, cross_val_score
 import matplotlib.pyplot as plt
 import numpy as np
+
+
+random.seed(26)
+np.random.seed(26)
+
 online_shoppers_purchasing_intention_dataset = fetch_ucirepo(id=468) 
   
 X = online_shoppers_purchasing_intention_dataset.data.features 
