@@ -18,8 +18,8 @@ y = online_shoppers_purchasing_intention_dataset.data.targets
 y = y.values.ravel()
 X,y = utils.shuffle(X, y)
 
-X = X[:1000]
-y = y[:1000]
+X = X[:5000]
+y = y[:5000]
 X = pd.get_dummies(X, columns=['Month', 'VisitorType'])
  
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=42, stratify=y)

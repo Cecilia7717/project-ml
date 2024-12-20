@@ -1,0 +1,30 @@
+| Feature                       |   RF Importance |   AdaBoost Importance |
+|:------------------------------|----------------:|----------------------:|
+| PageValues                    |     0.402614    |                  0.48 |
+| ExitRates                     |     0.0846152   |                  0.14 |
+| ProductRelated_Duration       |     0.0788203   |                  0    |
+| ProductRelated                |     0.0672446   |                  0    |
+| BounceRates                   |     0.0577837   |                  0.04 |
+| Administrative_Duration       |     0.0503969   |                  0    |
+| Administrative                |     0.0391559   |                  0    |
+| TrafficType                   |     0.0283468   |                  0    |
+| Informational_Duration        |     0.0280264   |                  0    |
+| Region                        |     0.0270764   |                  0    |
+| Month_Nov                     |     0.0235772   |                  0.2  |
+| Browser                       |     0.0175859   |                  0    |
+| Informational                 |     0.0170328   |                  0    |
+| OperatingSystems              |     0.0166456   |                  0    |
+| Weekend                       |     0.00945192  |                  0    |
+| VisitorType_Returning_Visitor |     0.00852322  |                  0    |
+| VisitorType_New_Visitor       |     0.00635391  |                  0.06 |
+| Month_May                     |     0.0063041   |                  0.08 |
+| Month_Oct                     |     0.00500593  |                  0    |
+| Month_Dec                     |     0.00498314  |                  0    |
+| Month_Mar                     |     0.00471067  |                  0    |
+| Month_Sep                     |     0.00387399  |                  0    |
+| SpecialDay                    |     0.00348955  |                  0    |
+| Month_Jul                     |     0.00327302  |                  0    |
+| Month_Aug                     |     0.00261917  |                  0    |
+| Month_June                    |     0.00183814  |                  0    |
+| VisitorType_Other             |     0.000426073 |                  0    |
+| Month_Feb                     |     0.000225018 |                  0    |
