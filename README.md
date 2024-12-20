@@ -2,7 +2,7 @@
 
 **Course**: CS383 - Introduction to Machine Learning  
 **Semester**: Fall 2024  
-**Team Members**: Amy Li, Cecilia Chen
+**Team Members**: Amy Li, Cecilia Chen  
 **Instructor**: Adam Poliak
 
 ---
