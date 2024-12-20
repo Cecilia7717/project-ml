@@ -22,7 +22,13 @@
 ---
 
 ## Abstract
-Provide a brief summary of your project, including the problem tackled, the methodology used, and the key findings. This section should be concise and no more than 150-200 words.
+This project aimed to predict online shopping purchasing intentions by analyzing customer browsing patterns. Utilizing a dataset from the UCI Machine Learning Repository, we employed ensemble learning methods, specifically Random Forest and AdaBoost, to identify key factors influencing purchase decisions and to develop accurate predictive models. Our methodology involved data preprocessing, hyperparameter tuning using techniques like GridSearchCV, and model evaluation through train-test splits and cross-validation. We used Python packages such as pandas, scikit-learn, and matplotlib for data manipulation, model training, and visualization.
+
+Key Findings:
+
+1. Model Performance: Both Random Forest and AdaBoost demonstrated high accuracy, with Random Forest showing a slight edge in precision and AdaBoost in recall and F1 Score.
+2. Hyperparameter Tuning: For AdaBoost, an optimal range for n_estimators was found to be between 200 and 400, and a learning rate of around 0.02. Random Forest benefits from around 45 n_estimators, a min_samples_split of 12 to 17, and a max_depth of 6 to 16.
+3.Feature Importance: PageValues, ExitRates, and ProductRelated_Duration were identified as the most influential features in predicting purchasing intentions.
 
 
 ---
@@ -56,32 +62,35 @@ This project focuses on the following tasks:
 ---
 
 ## Related Work
-Summarize prior research or existing methods related to your project. Include citations or links to relevant papers, tools, or datasets. Discuss how your work builds upon or differs from these efforts.
+- In "Explaining the Success of AdaBoost and Random Forests as Interpolating Classifiers", Wyner et al. offer a theoretical explanation for the success of AdaBoost and Random Forests. It suggests that both algorithms work well due to their ability to interpolate the training data completely without error, combined with a self-averaging property that leads to low generalization error. The paper challenges conventional wisdom about the need for regularization or early stopping in boosting algorithms and proposes using AdaBoost like Random Forests, with large decision trees and without regularization or early stopping. This inspired us to use both Random Forests and AdaBoost to evaluate the Online Shopping Purrchasing Intention dataset.
 
+- The paper "Hyperparameters and Tuning Strategies for Random Forest" written by Probst et al. introduces model-based optimization (MBO) as an effective tuning strategy and presents the tuneRanger R package to automate this process. Benchmark studies demonstrate the improved prediction performance and efficiency of tuneRanger compared to default settings and other tuning methods. The paper emphasizes the importance of tuning hyperparameters like n_estimators (the number of trees), max_features (variables drawn for each split), min_samples_split (minimum samples for a node to split), and min_samples_leaf (minimum samples in a leaf node) for optimizing Random Forest performance. It confirms that while Random Forests perform well with default settings, hyperparameter tuning can further enhance model accuracy. Therefore, we decided to include n_estimators, max_features, and min_samples_split tuning for hyper parameter tuning.
 ---
 
 ## Data Description
 Describe the dataset(s) you used, including:
-- **Source(s)**: Where the data came from (e.g., Kaggle, UCI ML Repository, custom dataset).
-- **Size and Format**: Number of rows, features, and data types.
-- **Preprocessing**: Steps taken to clean or transform the data, including handling missing values or feature engineering.
+- **Source(s)**: 
+The dataset in question is sourced from the UCI Machine Learning Library
+, as mentioned by its creators, C. Okan Sakar from the Department of Computer Engineering, Bahcesehir University, and Yomi Kastro from Inveon Information Technologies Consultancy and Trade
+. It is specifically designed for the subject area of business and is associated with tasks such as classification and clustering.
+
+- **Size and Format**: The dataset is available in a CSV format, which is a common structured data format that can be easily used for machine learning tasks. It consists of 12,330 instances, each representing a user session over a one-year period. There are 17 features in total, with 10 being numerical and 7 being categorical. The numerical features include metrics like 'Administrative Duration', 'Informational Duration', and 'ProductRelated Duration', which are derived from the URL information of the pages visited by the user. The categorical features include attributes such as 'Month', 'OperatingSystems', 'Browser', 'Region', 'TrafficType', 'VisitorType', and 'Weekend'
+.
+
+- **Preprocessing**: The dataset is clean and doesn't have any missing data.
+
+
+
 
 ---
 
 ## Methodology
-Outline your approach, including:
-1. The algorithms or models used (e.g., linear regression, neural networks, etc.).
-2. Details of the training process (e.g., train-test splits, cross-validation).
-3. Any hyperparameter tuning performed.
-4. Tools and libraries employed (e.g., scikit-learn, PyTorch).
+1. In our approach, we utilized two prominent ensemble learning algorithms, AdaBoost and Random Forest, to tackle classification tasks. We structured our training process with a meticulous train-test split to assess the model's performance on unseen data, and we also implemented cross-validation to bolster the reliability of our models. For hyperparameter tuning, we meticulously adjusted key parameters: for AdaBoost, we focused on n_estimators and learning_rate, while for Random Forest, we fine-tuned n_estimators, max_features, min_samples_split, and min_samples_leaf. We employed a variety of Python packages including ucimlrepo for dataset retrieval, pandas for data manipulation, scikit-learn for model training and evaluation, and matplotlib.pyplot for data visualization. Our analysis focused on the AdaBoostClassifier and RandomForestClassifier from scikit-learn to perform classification tasks, with numpy and random supporting numerical operations and randomization needs.
 
+2. We performed Model Comparision Based on Best Parameter Prediction, which applied Random Forest and AdaBoost algorithms to predict online shopping purchasing intentions, using a 90-10 train-test split and 5-fold cross-validation to ensure generalization. Hyperparameter tuning was performed with GridSearchCV to optimize model parameters, leveraging tools like scikit-learn, pandas, and Matplotlib for modeling and analysis.
 ---
 
 ## Results
-Present the results of your experiments, including:
-- Key metrics (e.g., accuracy, precision, recall, F1 score, etc.).
-- Comparisons between models or baselines.
-- Visualizations (e.g., plots, confusion matrices).
 
 ### Hyperparameter tuning
 
@@ -91,43 +100,47 @@ Here we will include the results for hyperparameter tuning for both AdaBoost and
 
 **n_estimators**
 
-The graph below shows the accuracy of the model on both the training and validation sets as the number of estimators increases. We varies n_estimators from 0 to 150. The training accuracy generally increases with more estimators at early stage, while the validation accuracy reaches a plateau and starts to fluctuate. This suggests that increasing the number of estimators beyond a certain point may lead to overfitting, as the model becomes too complex and starts to fit the noise in the training data. We suggests that setting n_estimators to be around 12 might be best. However, this might be influenced by the fact that we only use 1000 samples from the dataset.
+The AdaBoost validation curve demonstrates that as the number of estimators increases, the training accuracy initially remains high but then shows a slight downward trend, which is a common sign of the model becoming more complex and possibly overfitting. The validation accuracy, which is crucial for assessing the model's performance on new data, stays relatively consistent and does not significantly improve with additional estimators, indicating that the model is already generalizing well.
 
-![Alt text](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20AdaBoost%20(n_estimators).png)
+However, there is a noticeable dip in validation accuracy at around 600 estimators, which could be an indication of overfitting or a point of instability. To avoid this and to maintain a good balance between bias and variance, a recommended number of estimators might be between late 200 and 400. This range seems to offer a stable and high validation accuracy, suggesting that the model is performing well without being overly complex.
+
+![Alt text](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20AdaBoost%20(n_estimators_1).png)
 
 **learning rate**
 
-The plot shows the validation curve for an AdaBoost model as the learning rate increase from 0.1 to 1.
+The plot shows the validation curve for an AdaBoost model as the learning rate increase from 0.0001 to 1.
 
-The blue line represents the training accuracy, while the dashed orange line represents the validation accuracy. As the learning rate increases, the training accuracy generally improves, but the validation accuracy initially increases, reaches a peak around a learning rate of 0.53, and then starts to decline.
-This pattern suggests that a learning rate around 0.52 might be a good choice for this model. A higher learning rate can lead to overfitting, where the model becomes too sensitive to the training data and performs poorly on unseen data.
+The blue line represents the training accuracy, while the dashed orange line represents the validation accuracy. As the learning rate increases, the training accuracy generally improves, but the validation accuracy initially increases, reaches a peak around a learning rate of 0.53, and then starts to decline. This pattern suggests this may not be the right range for tuning best learning rate.
 
 ![Alt text](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20AdaBoost%20(learning_rate_1).png)
+
+Therefore, we have the other experiment done, which focused on learning rate from 0.00001 to 0.1 with plot shown below. We can see that the training accuracy increases first, then remains a little bit above 0.90 for a while, and then drop. This suggests the best learning rate should be around 2e-2.
+
+![Alt text](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20AdaBoost%20(learning_rate).png)
 
 #### Random Forest
 **n_estimators**
 
-The plot illustrates the validation curve for a Random Forest model, showcasing the impact of the number of n_estimators on both training and validation accuracy. As the number of n_estimators increases, the training accuracy steadily improves, while the validation accuracy initially increases and then stabilizes around a value of 0.88. This suggests that increasing the number of estimators beyond a certain point (around 50) provides diminishing returns in terms of validation accuracy. Therefore, a model with approximately 45 estimators might be a good balance between model complexity and generalization performance.
+The plot illustrates the validation curve for a Random Forest model, showcasing the impact of the number of n_estimators on both training and validation accuracy. As the number of n_estimators increases, the training accuracy steadily improves, while the validation accuracy initially increases and then stabilizes around a value a little bit higher than 0.88. This suggests that increasing the number of estimators beyond a certain point (around 50) provides diminishing returns in terms of validation accuracy. Therefore, a model with approximately 45 estimators might be a good balance between model complexity and generalization performance.
 
 ![Alt text](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20Random%20Forest%20(n_estimators).png)
 
 **min_samples_split**
 
-The plot displays the validation curve for a Random Forest model, focusing on the min_samples_split hyperparameter. As min_samples_split increases, the training accuracy decreases while the validation accuracy initially improves but then fluctuates. A min_samples_split value around 12 seems to offer a good balance between overfitting and underfitting, but further tuning might be necessary.
+The plot displays the validation curve for a Random Forest model, focusing on the min_samples_split hyperparameter. The training accuracy remains relatively stable and high, around 0.89, indicating the model is learning well on the training data. In contrast, the validation accuracy fluctuates more and is generally lower, around 0.85 to 0.87, suggesting some overfitting.
+
+The best balance between bias and variance seems to occur around min_samples_split values of 12 to 17, where the validation accuracy peaks. A suggested value for min_samples_split could be in this range to achieve a good generalization performance on unseen data.
 
 ![Alt text](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20Random%20Forest%20(min_samples_split).png)
 
 **max_depth**
 
-The figure shows the validation curve of the random forest model, illustrating the effect of max_depth on the training and validation accuracy. As max_depth increases, the training accuracy steadily increases and peaks around 20. However, the validation accuracy initially rises, peaks around the same max_depth value, and then begins to decline. This suggests a potential overfitting problem, where the model becomes too complex and begins to memorize the training data instead of generalizing to unseen data. max_depth values around 20 seem to be a good compromise between bias and variance.
+The Random Forest validation curve indicates that training accuracy rises sharply and then plateaus as max_depth increases, showing the model's robust learning on training data. In contrast, validation accuracy peaks at a max_depth of around 6, after which it declines, hinting at overfitting with deeper trees.
+
+Post the initial peak, validation accuracy levels off, maintaining a consistent, albeit lower, performance from max_depth of 16 onwards. This flattening suggests diminishing returns on increasing depth. A max_depth of 6 to 16 is thus optimal, balancing model complexity and generalization for the best validation accuracy.
 
 ![Alt text](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20Random%20Forest%20(max_depth).png)
 
-**criterion**
-
-The plot illustrates the validation curve for a Random Forest model, comparing Gini impurity and Log Loss as splitting criteria. While Log Loss generally achieves higher training accuracy, Gini impurity often leads to better validation accuracy, suggesting a potential trade-off between model complexity and generalization.
-
-![Alt text](https://github.com/Cecilia7717/project-ml/blob/main/Validation%20Curve%20for%20Random%20Forest%20(criterion).png)
 
 ### Model Comparision Based on Best Parameter Prediction
 
@@ -190,16 +203,9 @@ The performance of the best-performing model, Random Forest, is summarized in a 
 
 The performance of the two models is summarized in their confusion matrices. For Random Forest, the model correctly identified 1009 instances where a purchase did not occur (True Negatives) and 102 instances where a purchase occurred (True Positives). However, there were 89 False Negatives, where actual purchases were missed, and 33 False Positives, where purchases were incorrectly predicted. These results indicate that while the model performs well in identifying non-purchases, it struggles with predicting purchase outcomes.
 
-
 ---
 
 ## Discussion
-Interpret your results:
-
-- What worked well?
-- What challenges or limitations did you encounter?
-- How do the results address your problem statement?
-
 
 ### What Worked Well
 - The ensemble learning models, Random Forest and AdaBoost, proved effective in predicting online shopping purchasing intentions. Both models demonstrated strong performance, with accuracies of approximately 90%. Random Forest excelled in precision, indicating its ability to minimize false positive predictions, while AdaBoost performed slightly better in recall and F1 Score, suggesting its strength in identifying actual purchasers. 
@@ -221,7 +227,7 @@ The results successfully address the problem statement by:
 
 ## Conclusion and Future Work
 
-Summarize the key findings and discuss potential extensions of your work. What would you do differently with more time or resources?
+This project successfully applied Random Forest and AdaBoost algorithms to predict online shopping purchasing intentions, achieving high accuracy and providing actionable insights into consumer behavior. Key features such as PageValues, ExitRates, and ProductRelated_Duration were identified as significant predictors of purchase outcomes. The findings suggest that ensemble learning methods are effective for e-commerce analytics, offering a balance between precision and recall that is crucial for business decision-making.
 
 ### Future Work
 To further enhance the findings:
@@ -229,9 +235,15 @@ To further enhance the findings:
 - Exploring additional ensemble methods or deep learning models might uncover new patterns and improve predictive accuracy.
 - Incorporating temporal or behavioral data could provide deeper insights into shopper behavior, especially for time-sensitive or recurring purchasing patterns.
 
-
 ---
 
 ## References
 
-Include any citations for datasets, tools, libraries, or papers used in your project. Use a consistent citation format.
+Friedman, J., Hastie, T., & Tibshirani, R. (2000). Additive logistic regression: a statistical view of boosting (with discussion and a rejoinder by the authors). The Annals of Statistics, 28(2), 337-407. Institute of Mathematical Statistics.
+
+Wyner, A., Olson, M., Bleich, J., & Mease D. (2017). Explaining the Success of AdaBoost and Random Forests as Interpolating Classifiers. DOI: https://doi.org/10.48550/arXiv.1504.07676
+
+Probst, P., Wright, M., & Boulesteix, A. (2019). Hyperparameters and Tuning Strategies for Random Forest. DOI: 
+https://doi.org/10.48550/arXiv.1804.03515
+
+Sakar, C., & Kastro, Y. (2018). Online Shoppers Purchasing Intention Dataset. UCI Machine Learning Repository. DOI: https://doi.org/10.24432/C5F88

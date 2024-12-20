@@ -10,8 +10,8 @@ from sklearn.model_selection import train_test_split, cross_val_score
 import matplotlib.pyplot as plt
 import numpy as np
 import random
-random.seed(26)
-np.random.seed(26)
+random.seed(30)
+np.random.seed(30)
 online_shoppers_purchasing_intention_dataset = fetch_ucirepo(id=468) 
   
 X = online_shoppers_purchasing_intention_dataset.data.features 
@@ -24,14 +24,14 @@ X = X[:1000]
 y = y[:1000]
 X = pd.get_dummies(X, columns=['Month', 'VisitorType'])
  
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=42, stratify=y)
-n_estimators_range = range(1, 151)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=30, stratify=y)
+n_estimators_range = range(1, 1001)
 
 train_scores = []
 val_scores = []
 
 for n_estimators in n_estimators_range:
-    ada_model = AdaBoostClassifier(n_estimators=n_estimators, random_state=42)
+    ada_model = AdaBoostClassifier(n_estimators=n_estimators, random_state=30)
 
     train_score = cross_val_score(ada_model, X_train, y_train, cv=5).mean()
     train_scores.append(train_score)
@@ -49,5 +49,5 @@ plt.xlabel('n_estimators')
 plt.ylabel('Accuracy')
 plt.title('Validation Curve for AdaBoost')
 plt.legend()
-plt.savefig("Validation Curve for AdaBoost (n_estimators).png")
+plt.savefig("Validation Curve for AdaBoost (n_estimators_1).png")
 plt.show()

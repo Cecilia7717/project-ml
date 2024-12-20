@@ -11,8 +11,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import random
 
-random.seed(26)
-np.random.seed(26)
+random.seed(30)
+np.random.seed(30)
 
 online_shoppers_purchasing_intention_dataset = fetch_ucirepo(id=468) 
   
@@ -26,7 +26,6 @@ X = X[:1000]
 y = y[:1000]
 X = pd.get_dummies(X, columns=['Month', 'VisitorType'])
  
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=42, stratify=y)
 
 max_depth_range = range(1, 51)
 
@@ -34,7 +33,9 @@ train_scores = []
 val_scores = []
 
 for max_depth in max_depth_range:
-    rf_model = RandomForestClassifier(max_depth=max_depth, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=30, stratify=y)
+
+    rf_model = RandomForestClassifier(max_depth=max_depth, random_state=30)
 
     train_score = cross_val_score(rf_model, X_train, y_train, cv=5).mean()
     train_scores.append(train_score)
