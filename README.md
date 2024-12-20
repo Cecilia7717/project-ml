@@ -34,8 +34,6 @@ Key Findings:
 ---
 
 ## Introduction
-Introduce the problem or question your project addresses. Explain its significance and relevance to machine learning. Include a brief overview of your approach and the objectives of the project.
-
 Online shopping has become a dominant mode of consumer behavior, making it critical for online shopping platforms to understand the factors influencing purchasing decisions. Predicting whether a shopper will complete a purchase based on their browsing behavior can enable businesses to optimize their platforms designs and marketing strategies, leading to increased revenue and customer satisfaction.
 
 This project explores the prediction of online shopping purchasing intentions using machine learning. By analyzing a dataset that captures customer browsing patterns, the project aims to identify key factors influencing purchase decisions and develop models that accurately predict purchase outcomes. Applying ensemble learning methods, Random Forest and AdaBoost, we aim to discover actionable insights while improving prediction accuracy.
