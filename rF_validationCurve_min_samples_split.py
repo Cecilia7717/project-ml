@@ -9,6 +9,10 @@ from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.ensemble import RandomForestClassifier
 import matplotlib.pyplot as plt
 import numpy as np
+import random
+
+random.seed(26)
+np.random.seed(26)
 # fetch dataset 
 online_shoppers_purchasing_intention_dataset = fetch_ucirepo(id=468) 
   
@@ -46,8 +50,7 @@ plt.xlabel('min_samples_split')
 plt.ylabel('Accuracy')
 plt.title('Validation Curve for Random Forest')
 plt.xticks(range(min(min_samples_split_range), max(min_samples_split_range), 5)) 
-
-plt.xticks(rotation=45) 
+# plt.xticks(rotation=45) 
 plt.legend()
 plt.savefig("Validation Curve for Random Forest (min_samples_split).png")
 plt.show()
