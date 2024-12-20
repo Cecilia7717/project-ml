@@ -43,8 +43,6 @@ This project explores the prediction of online shopping purchasing intentions us
 ---
 
 ## Problem Statement
-Clearly define the problem you aimed to solve or the research question you sought to answer. Include any hypotheses you formulated and the scope of your project.
-
 The central problem addressed in this project is:
 
 **How can machine learning models predict online shopping purchasing intentions, and what are the key factors driving purchase decisions?**
